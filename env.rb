@@ -11,3 +11,6 @@ API_URL = "https://api.opensea.io/api/v1/assets?order_direction=desc&limit=50&co
 COLLECTION_NAME = ENV["COLLECTION_NAME"]
 
 raise "CollectionNameNotFoundError - please specify COLLECTION_NAME (see readme)" if !COLLECTION_NAME || COLLECTION_NAME == ""
+
+# hotfix for old macs :/
+Excon.defaults[:ssl_verify_peer] = false
