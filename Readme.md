@@ -1,4 +1,6 @@
-# opensea-scraper
+# opensea-images-downloader
+
+Script to download all the images from an opensea collection using the OpenSea API
 
 ### Installation
 
