@@ -1,5 +1,9 @@
 require_relative "env"
 
+DATA = {}
+DATA[:img_num] = 0
+DATA[:offset] = 0
+
 def fetch_batch(offset: 0)
   url = API_URL % [COLLECTION_NAME, offset]
   res = Excon.get url
@@ -7,6 +11,8 @@ def fetch_batch(offset: 0)
   exit if assets_empty? res: res
   image_urls = fetch_image_urls res: res
   download_images image_urls: image_urls
+  DATA[:offset] += 1
+  fetch_batch offset: DATA[:offset]
 end
 
 def assets_empty?(res:)
@@ -25,5 +31,23 @@ def fetch_image_urls(res:)
 end
 
 def download_images(image_urls:)
-
+  image_urls.each do |image_url|
+    download_image image_url: image_url
+  end
 end
+
+def download_image(image_url:)
+  res = Excon.get image_url
+  image_binary = res.body
+  file_ext = File.extname image_url
+  image_num = DATA[:img_num]
+  File.write "#{OUTPUT_DIR}/#{image_num}#{file_ext}", image_binary
+  DATA[:img_num] += 1
+end
+
+
+def main
+  fetch_batch
+end
+
+main

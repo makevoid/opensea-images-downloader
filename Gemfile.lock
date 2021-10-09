@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    excon (0.86.0)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  excon
+
+BUNDLED WITH
+   2.2.28
