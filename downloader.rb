@@ -6,7 +6,7 @@ DATA[:offset] = 0
 
 def fetch_batch(offset: 0)
   url = API_URL % [COLLECTION_NAME, offset]
-  puts url
+  # puts url
   res = Excon.get url
   res = JSON.parse res.body
   exit if assets_empty? res: res
@@ -39,7 +39,7 @@ def download_images(image_urls:)
 end
 
 def download_image(image_url:)
-  puts image_url
+  # puts image_url
   res = Excon.get image_url
   image_binary = res.body
   file_ext = File.extname image_url
