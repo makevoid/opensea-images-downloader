@@ -5,8 +5,10 @@ DATA[:img_num] = 0
 DATA[:offset] = 0
 
 def fetch_batch(offset: 0)
+  offset *= PER_PAGE
   url = API_URL % [COLLECTION_NAME, offset]
   # puts url
+  puts url
   res = Excon.get url
   res = JSON.parse res.body
   exit if assets_empty? res: res
@@ -34,12 +36,12 @@ end
 
 def download_images(image_urls:)
   image_urls.each do |image_url|
-    download_image image_url: image_url
+    download_image image_url: image_url unless image_url == ""
   end
 end
 
 def download_image(image_url:)
-  # puts image_url
+  URI image_url # uri check
   res = Excon.get image_url
   image_binary = res.body
   file_ext = File.extname image_url
@@ -47,6 +49,10 @@ def download_image(image_url:)
   image_num = DATA[:img_num]
   File.write "#{OUTPUT_DIR}/#{image_num}#{file_ext}", image_binary
   DATA[:img_num] += 1
+rescue URI::InvalidURIError
+  puts "invalid uri - #{image_url.inspect}"
+rescue ArgumentError
+  puts "invalid uri? - #{image_url.inspect}"
 end
 
 
