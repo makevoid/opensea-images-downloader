@@ -43,7 +43,7 @@ def download_image(image_url:)
   res = Excon.get image_url
   image_binary = res.body
   file_ext = File.extname image_url
-  file_ext = ".png" unless file_ext
+  file_ext = ".png" if file_ext == ""
   image_num = DATA[:img_num]
   File.write "#{OUTPUT_DIR}/#{image_num}#{file_ext}", image_binary
   DATA[:img_num] += 1
