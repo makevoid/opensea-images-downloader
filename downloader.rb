@@ -16,6 +16,10 @@ def fetch_batch(offset: 0)
   download_images image_urls: image_urls
   DATA[:offset] += 1
   fetch_batch offset: DATA[:offset]
+rescue Excon::Error::Timeout
+  puts "Got timeout - waiting for 10 seconds"
+  sleep 10
+  retry
 end
 
 def assets_empty?(res:)
@@ -49,6 +53,10 @@ def download_image(image_url:)
   image_num = DATA[:img_num]
   File.write "#{OUTPUT_DIR}/#{image_num}#{file_ext}", image_binary
   DATA[:img_num] += 1
+rescue Excon::Error::Timeout
+  puts "Got timeout - waiting for 10 seconds"
+  sleep 10
+  retry
 rescue URI::InvalidURIError
   puts "invalid uri - #{image_url.inspect}"
 rescue ArgumentError
