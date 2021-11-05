@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  opensea_downloader:
+    image: makevoid/opensea_images_downloader
+    build:
+      context: .
+      args:
+        COLLECTION_NAME: "$COLLECTION_NAME"

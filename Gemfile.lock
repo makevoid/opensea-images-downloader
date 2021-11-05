@@ -2,12 +2,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     excon (0.87.0)
+    rake (13.0.6)
 
 PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
   excon
+  rake
 
 BUNDLED WITH
    2.2.28
