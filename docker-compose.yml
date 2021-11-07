@@ -7,3 +7,5 @@ services:
       context: .
       args:
         COLLECTION_NAME: "$COLLECTION_NAME"
+    volumes:
+      - ./output:/app/output
