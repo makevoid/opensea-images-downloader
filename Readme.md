@@ -10,16 +10,18 @@ I recommend you run the docker version as you don't have to have Ruby and Bundle
 
 - Docker and Docker compose installed (https://docs.docker.com/get-docker/ - https://docs.docker.com/compose/install/)
 
-#### System version
+#### System version (non-docker)
 
 - Ruby and Bundler installed (`gem install bundler`)
 
 
 ### Running in docker
 
-To run in docker (easiest / recommended mode) just run this command:
+To run in docker (easiest / recommended mode) just clone the project, cd into it and run this command:
 
     docker-compose run -e COLLECTION_NAME=boredapeyachtclub opensea_downloader
+
+Check the `output` directory which will contain the downloaded images.
 
 
 ### Installation (non-docker)
