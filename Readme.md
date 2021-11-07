@@ -2,7 +2,27 @@
 
 Script to download all the images from an opensea collection using the OpenSea API
 
-### Installation
+### Prerequisites
+
+I recommend you run the docker version as you don't have to have Ruby and Bundler installed.
+
+#### Docker version
+
+- Docker and Docker compose installed (https://docs.docker.com/get-docker/ - https://docs.docker.com/compose/install/)
+
+#### System version
+
+- Ruby and Bundler installed (`gem install bundler`)
+
+
+### Running in docker
+
+To run in docker (easiest / recommended mode) just run this command:
+
+    docker-compose run -e COLLECTION_NAME=boredapeyachtclub opensea_downloader
+
+
+### Installation (non-docker)
 
 clone and cd into the directory
 
@@ -12,7 +32,7 @@ run:
 
     bundle
 
-### Running
+### Running (non-docker)
 
 execute this command to start scraping:
 
@@ -20,7 +40,6 @@ execute this command to start scraping:
 
 
 (COLLECTION_NAME is the opensea collection name all lowercase, with spaces instead of dashes, as it appears in the URL)
-
 
 
 ---
