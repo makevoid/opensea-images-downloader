@@ -51,7 +51,8 @@ def download_image(image_url:)
   file_ext = File.extname image_url
   file_ext = ".png" if file_ext == ""
   image_num = DATA[:img_num]
-  File.write "#{OUTPUT_DIR}/#{image_num}#{file_ext}", image_binary
+  path = "#{OUTPUT_DIR}/#{image_num}#{file_ext}"
+  File.open(path, "wb") { |f| f.write image_binary }
   DATA[:img_num] += 1
 rescue Excon::Error::Timeout
   puts "Got timeout - waiting for 10 seconds"
