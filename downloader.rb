@@ -16,7 +16,7 @@ def fetch_batch(offset: 0)
   download_images image_urls: image_urls
   DATA[:offset] += 1
   fetch_batch offset: DATA[:offset]
-rescue Excon::Error::Timeout
+rescue Excon::Error::Timeout, Errno::ECONNRESET
   puts "Got timeout - waiting for 10 seconds"
   sleep 10
   retry
