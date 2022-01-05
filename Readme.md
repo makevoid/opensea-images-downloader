@@ -19,7 +19,7 @@ I recommend you run the docker version as you don't have to have Ruby and Bundle
 
 To run in docker (easiest / recommended mode) just clone the project, cd into it and run this command:
 
-    docker-compose run -e COLLECTION_NAME=boredapeyachtclub opensea_downloader
+    docker-compose run -e COLLECTION_NAME=boredapeyachtclub makevoid/opensea_downloader
 
 Check the `output` directory which will contain the downloaded images.
 
