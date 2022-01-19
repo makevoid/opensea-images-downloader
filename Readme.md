@@ -1,5 +1,11 @@
 # opensea-images-downloader
 
+
+### UPDATE: Opensea changed its API and it now requires an API key for listing the assets, note that this project doesn't work anymore as it is
+
+----
+
+
 Script to download all the images from an opensea collection using the OpenSea API
 
 ### Prerequisites
