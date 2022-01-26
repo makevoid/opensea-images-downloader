@@ -1,16 +1,20 @@
 require_relative "env"
 
-DATA = {}
-DATA[:img_num] = 0
-DATA[:offset] = 0
+def exit_err_1020
+  puts "Opensea rejected the request (error 1020), cannot continue - it is pot"
+  puts "exiting..."
+  exit
+end
 
 def fetch_batch(offset: 0)
   offset *= PER_PAGE
   url = API_URL % [COLLECTION_NAME, offset]
   # puts url
   puts url
-  res = Excon.get url
-  res = JSON.parse res.body
+  res = Excon.get url, headers: OPENSEA_API_HEADERS
+  res = res.body
+  exit_err_1020 if res == "error code: 1020"
+  res = JSON.parse res
   exit if assets_empty? res: res
   image_urls = fetch_image_urls res: res
   download_images image_urls: image_urls
@@ -63,7 +67,6 @@ rescue URI::InvalidURIError
 rescue ArgumentError
   puts "invalid uri? - #{image_url.inspect}"
 end
-
 
 def main
   fetch_batch
