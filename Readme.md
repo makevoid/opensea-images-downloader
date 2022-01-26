@@ -1,7 +1,7 @@
 # opensea-images-downloader
 
 
-### UPDATE: Opensea changed its API and it now requires an API key for listing the assets, note that this project doesn't work anymore as it is
+Opensea changed its API and it now requires an API key for listing the assets, note that you'll need to request an api key and use it via the `OPENSEA_API_KEY` environment variable
 
 ----
 
@@ -44,11 +44,12 @@ run:
 
 execute this command to start scraping:
 
-    rake COLLECTION_NAME="..."
+    rake COLLECTION_NAME="..." OPENSEA_API_KEY="..."
 
 
-(COLLECTION_NAME is the opensea collection name all lowercase, with spaces instead of dashes, as it appears in the URL)
+COLLECTION_NAME is the opensea collection name all lowercase, with spaces instead of dashes, as it appears in the URL.
 
+OPENSEA_API_KEY is the opensea api key required to call the NFT API which now requires API KEY token based authorization.
 
 ---
 

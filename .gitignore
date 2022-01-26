@@ -2,3 +2,4 @@ output/*
 output*
 image_*
 images_*
+.DS_Store
