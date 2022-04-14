@@ -35,8 +35,8 @@ def fetch_image_urls(res:)
   assets = res.fetch "assets"
   image_urls = []
   assets.each do |asset|
-    image_url = asset.fetch "image_original_url"
-    image_url = asset.fetch "image_url" unless image_url
+    image_url = asset.fetch "image_url"
+    image_url = asset.fetch "image_original_url" unless image_url
     image_urls.push image_url
   end
   image_urls

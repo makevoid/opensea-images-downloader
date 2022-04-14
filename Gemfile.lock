@@ -5,6 +5,7 @@ GEM
     rake (13.0.6)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -12,4 +13,4 @@ DEPENDENCIES
   rake
 
 BUNDLED WITH
-   2.2.28
+   2.3.10
